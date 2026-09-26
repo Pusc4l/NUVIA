@@ -238,12 +238,15 @@ export default function Home() {
             .map((timeStr: string, index: number) => {
               const hour = new Date(timeStr).getHours();
               return {
-                time: index === 0 || hour === currentHour ? 'Sekarang' : `${String(hour).padStart(2, '0')}:00`,
+                time: hour === currentHour ? 'Sekarang' : `${String(hour).padStart(2, '0')}:00`,
                 hourRaw: hour,
                 temp: Math.round(wData.hourly.temperature_2m[index]),
               };
             })
             .filter((item: { hourRaw: number }) => item.hourRaw >= currentHour)
+            .filter((item: { time: string }, index: number, self: any[]) => 
+              index === self.findIndex((t) => t.time === item.time)
+            )
             .slice(0, 5)
             .map(({ time, temp }: { time: string; temp: number }) => ({ time, temp }))
         : [];
@@ -1040,7 +1043,7 @@ export default function Home() {
           </div>
         </div>
 
-        {isCityModalOpen && (
+{isCityModalOpen && (
           <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 backdrop-blur-xs animate-fadeIn">
             <div className={`w-full max-w-md h-[80vh] rounded-t-[2rem] p-5 flex flex-col justify-between shadow-2xl transition-all ${
               isDarkMode ? 'bg-slate-900 text-slate-100 border-t border-slate-800' : 'bg-white text-slate-800'
