@@ -231,25 +231,31 @@ export default function Home() {
       const now = new Date();
       const localTimeMs = now.getTime() + (now.getTimezoneOffset() * 60000) + (utcOffsetSeconds * 1000);
       const cityLocalTime = new Date(localTimeMs);
-      const currentHour = cityLocalTime.getHours();
 
-      const hourlyList: HourlyItem[] = wData?.hourly?.time
-        ? wData.hourly.time
-            .map((timeStr: string, index: number) => {
-              const hour = new Date(timeStr).getHours();
-              return {
-                time: hour === currentHour ? 'Sekarang' : `${String(hour).padStart(2, '0')}:00`,
-                hourRaw: hour,
-                temp: Math.round(wData.hourly.temperature_2m[index]),
-              };
-            })
-            .filter((item: { hourRaw: number }) => item.hourRaw >= currentHour)
-            .filter((item: { time: string }, index: number, self: any[]) => 
-              index === self.findIndex((t) => t.time === item.time)
-            )
-            .slice(0, 5)
-            .map(({ time, temp }: { time: string; temp: number }) => ({ time, temp }))
-        : [];
+      const allHourlyTimes: string[] = wData?.hourly?.time || [];
+      const allHourlyTemps: number[] = wData?.hourly?.temperature_2m || [];
+
+      // Cari indeks data waktu yang paling mendekati atau sama dengan waktu lokal saat ini
+      const startIndex = allHourlyTimes.findIndex((timeStr: string) => {
+        const itemDate = new Date(timeStr);
+        return itemDate.getTime() >= cityLocalTime.getTime();
+      });
+
+      const effectiveStartIndex = startIndex !== -1 ? startIndex : 0;
+
+      const hourlyList: HourlyItem[] = [];
+      // Ambil 8 slot waktu ke depan secara aman
+      for (let i = effectiveStartIndex; i < Math.min(effectiveStartIndex + 8, allHourlyTimes.length); i++) {
+        const timeStr = allHourlyTimes[i];
+        const itemDate = new Date(timeStr);
+        const hour = itemDate.getHours();
+        
+        const isNow = i === effectiveStartIndex;
+        hourlyList.push({
+          time: isNow ? 'Sekarang' : `${String(hour).padStart(2, '0')}:00`,
+          temp: Math.round(allHourlyTemps[i] ?? 30),
+        });
+      }
 
       const dailyList: DailyItem[] = [];
       if (wData?.daily?.time) {
