@@ -1,28 +1,28 @@
-# 🛡️ AirShield — Air Quality & Hazard Tracker
+# 🛡️ Nuvia — Air Quality & Hazard Tracker
 
-**AirShield** adalah aplikasi pemantau kualitas udara dan peringatan bahaya lingkungan secara *real-time*. Didesain dengan antarmuka modern yang responsif, performa tinggi, serta arsitektur *cross-platform* yang mendukung akses Web, Progressive Web App (PWA), hingga Aplikasi Android Native.
-
----
-
-## 🚀 Akses & Demo Aplikasi
-
-* **Web Live (Vercel):** [airshield-app.vercel.app](https://airshield-app.vercel.app)
-* **PWA Experience:** Buka tautan di atas melalui browser mobile (Google Chrome / Safari), lalu pilih **"Add to Home Screen"** atau **"Install Application"** untuk memasangnya di menu HP tanpa perlu mengunduh dari toko aplikasi.
+**Nuvia** is a real-time air quality monitoring and environmental hazard alert application. Designed with a modern responsive interface, high performance, and a cross-platform architecture supporting Web access, Progressive Web App (PWA), and Native Android applications.
 
 ---
 
-## ✨ Fitur Unggulan
+## 🚀 Access & Live Demo
 
-* 🌬️ **Real-Time Air Quality Index (AQI):** Menampilkan indeks kualitas udara akurat berbasis lokasi pengguna secara otomatis.
-* ⚠️ **Hazard Alerts & Risk Analysis:** Notifikasi dan kriteria risiko kesehatan terkait polusi udara.
-* 📱 **PWA & Android Native Support:** Aplikasi dapat diakses fleksibel sebagai situs web statis, aplikasi web terinstal, maupun file paket Android (`.apk`).
-* ⚡ **High Performance & Responsive UI:** Menggunakan skema desain modern berbasis Next.js App Router dan Tailwind CSS yang ringan dan cepat.
+* **Web Live (Vercel):** [nuvia-zeta.vercel.app](https://nuvia-zeta.vercel.app)
+* **PWA Experience:** Open the link above via mobile browser (Google Chrome / Safari), then select **"Add to Home Screen"** or **"Install Application"** to install it directly on your phone without downloading from an app store.
 
 ---
 
-## 🛠️ Tech Stack & Arsitektur
+## ✨ Key Features
 
-| Kategori | Teknologi / Library |
+* 🌬️ **Real-Time Air Quality Index (AQI):** Displays accurate air quality indexes automatically based on the user's location.
+* ⚠️ **Hazard Alerts & Risk Analysis:** Notifications and health risk criteria related to air pollution.
+* 📱 **PWA & Android Native Support:** Access the app flexibly as a static website, an installed web app, or an Android package file (`.apk`).
+* ⚡ **High Performance & Responsive UI:** Built with a modern design scheme using Next.js App Router and Tailwind CSS for a lightweight and fast experience.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+| Category | Technology / Library |
 | :--- | :--- |
 | **Frontend Framework** | [Next.js](https://nextjs.org/) (App Router, TypeScript) |
 | **Styling & UI** | [Tailwind CSS](https://tailwindcss.com/) |
@@ -33,19 +33,19 @@
 
 ---
 
-## 💻 Panduan Pengembangan Lokal (Development)
+## 💻 Local Development Guide
 
-Bagi yang ingin mengkloning dan menjalankan proyek ini di lingkungan lokal:
+For those who want to clone and run this project locally:
 
-### 1. Prasyarat
-* [Node.js](https://nodejs.org/) (versi 18.x atau lebih baru)
+### 1. Prerequisites
+* [Node.js](https://nodejs.org/) (version 18.x or newer)
 * `npm` / `pnpm` / `yarn`
 
-### 2. Kloning Repositori & Instalasi
+### 2. Clone Repository & Installation
 ```bash
-# Clone repositori
-git clone [https://github.com/Pusc4l/airshield-app.git](https://github.com/Pusc4l/airshield-app.git)
-cd airshield-app
+# Clone the repository
+git clone [https://github.com/Pusc4l/nuvia.git](https://github.com/Pusc4l/nuvia.git)
+cd nuvia
 
-# Install dependensi
+# Install dependencies
 npm install
