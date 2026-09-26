@@ -1,15 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// 📌 TARUH METADATA DI SINI (di file layout.tsx)
+// 📌 1. PISAHKAN THEME COLOR KE VIEWPORT EXPORT
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
+};
+
+// 📌 2. METADATA BERSIH TANPA THEMECOLOR
 export const metadata: Metadata = {
   title: "AirShield",
   description: "Weather and Air Hazard Tracker",
   manifest: "/manifest.json",
-  themeColor: "#0f172a",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
